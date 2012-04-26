@@ -185,6 +185,10 @@ class EuInstance(Instance):
         
     
     def attach_volume(self, volume,  dev=None, timeout=60):
+        '''
+        Method to self create attach volume and the timeout. If volume is not eucalyptus 
+        instance it converts to eucalyptus instance, and it returns self attached eucalyptus volume.   
+        '''
         if not isinstance(volume, EuVolume):
             euvolume = EuVolume.make_euvol_from_vol(volume)
         return self.attach_euvolume(euvolume,  dev=dev, timeout=timeout)
